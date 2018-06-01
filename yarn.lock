@@ -1079,12 +1079,6 @@ chess.js@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/chess.js/-/chess.js-0.10.2.tgz#eacefa2067155f87f046e80cc12d2019eef1b81a"
 
-chessboard@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/chessboard/-/chessboard-0.1.4.tgz#9eae3d4fa5aa8c807de37e5d235aced064a5ecc9"
-  dependencies:
-    chess.js "^0.10.2"
-
 chokidar@^2.0.0, chokidar@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.3.tgz#dcbd4f6cbb2a55b4799ba8a840ac527e5f4b1176"

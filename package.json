@@ -11,7 +11,7 @@
         "build": "encore production"
     },
     "dependencies": {
-        "chessboard": "^0.1.4",
+        "chess.js": "^0.10.2",
         "node-sass": "^4.9.0",
         "sass-loader": "^7.0.1"
     }
