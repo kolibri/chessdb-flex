@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Form;
+namespace App\Form\Type;
 
-use App\Entity\ImportPgn;
+use App\Form\Dto\ImportPgn;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;

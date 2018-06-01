@@ -2,10 +2,10 @@
 
 namespace App\Repository;
 
-use App\Entity\ImportPgn;
+use App\Entity\Game;
 use Doctrine\ORM\EntityManagerInterface;
 
-class ImportPgnRepository
+class GameRepository
 {
     private $entityManager;
 
@@ -14,10 +14,15 @@ class ImportPgnRepository
         $this->entityManager = $entityManager;
     }
 
-    public function persist(ImportPgn $importPgn, bool $flush = true): void
+    public function persist(Game $game, bool $flush = true): void
     {
-        $this->entityManager->persist($importPgn);
+        $this->entityManager->persist($game);
 
         $flush && $this->entityManager->flush();
+    }
+
+    public function findAll(): array
+    {
+        return $this->entityManager->getRepository(Game::class)->findAll();
     }
 }

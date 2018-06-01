@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <dl>
+        <dt>Event</dt>
+        <dd>{{ game.event }}</dd>
+        <dt>Site</dt>
+        <dd>{{ game.site }}</dd>
+        <dt>Date</dt>
+        <dd>{{ game.date.toString }}</dd>
+        <dt>round</dt>
+        <dd>{{ game.round }}</dd>
+        <dt>White</dt>
+        <dd>{{ game.white }}</dd>
+        <dt>Black</dt>
+        <dd>{{ game.Black }}</dd>
+        <dt>Result</dt>
+        <dd>{{ game.result }}</dd>
+        <dt>Moves</dt>
+        <dd>{{ game.moves|join(', ') }}</dd>
+    </dl>
+{% endblock %}

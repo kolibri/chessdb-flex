@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul>
+        {% for game in games %}
+            <li>
+                <a href="{{ path('game_view', {'id': game.id}) }}">{{ game.id }}</a>
+            </li>
+        {% else %}
+            <li>{{ 'game.list.no_games'|trans }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
