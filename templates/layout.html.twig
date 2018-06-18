@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/app.js') }}"></script>
+{% endblock %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    {% endblock %}
+
+{% block body %}
+    <header>
+
+        <nav>
+            <a href="{{ path('homepage') }}">Home</a>
+            <a href="{{ path('import_pgn') }}">Import Game</a>
+            <a href="{{ path('game_list') }}">Game List</a>
+        </nav>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+        \(^)> Chess-DB
+    </footer>
+
+{% endblock %}
