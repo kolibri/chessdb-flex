@@ -1,10 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
+{% block content %}
     <ul>
         {% for game in games %}
             <li>
-                <a href="{{ path('game_view', {'id': game.id}) }}">{{ game.id }}</a>
+                <a href="{{ path('game_view', {'id': game.id}) }}">{{ game.date.toString }}: {{ game.white }} - {{ game.black }}: {{ game.result }}</a>
+                {{ game|game_to_pgn_div({'data-show-header': 'false', 'data-show-buttons': 'false'}) }}
             </li>
         {% else %}
             <li>{{ 'game.list.no_games'|trans }}</li>
