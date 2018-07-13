@@ -1,0 +1,18 @@
+---
+language: php
+php:
+  - '7.2'
+
+before_script:
+#  - composer global require sensiolabs/security-checker
+  - cp .env.dist .env
+  - curl -L -o phpstan.phar https://github.com/phpstan/phpstan/releases/download/0.10.1/phpstan.phar
+  - composer install
+
+script:
+  - php phpstan.phar analyze -l7 ./src
+  - php ./bin/phpunit
+
+notifications:
+  email:
+    - entengelb@gmail.com

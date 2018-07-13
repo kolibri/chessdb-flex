@@ -15,6 +15,10 @@ class PgnValidator extends ConstraintValidator
         $this->chess = $chess;
     }
 
+    /**
+     * @param mixed $value
+     * @param Pgn $constraint
+     */
     public function validate($value, Constraint $constraint)
     {
         if (!$this->chess->validate($value)) {

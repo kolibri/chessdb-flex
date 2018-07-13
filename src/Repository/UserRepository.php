@@ -18,7 +18,9 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
     {
         $this->getEntityManager()->persist($user);
 
-        $flush && $this->getEntityManager()->flush();
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
 
     public function loadUserByUsername($username)
@@ -28,7 +30,6 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
             ->setParameter('username', $username)
             ->setParameter('email', $username)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 }
