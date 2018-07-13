@@ -5,5 +5,5 @@ namespace App\Chess;
 interface PgnParserInterface
 {
     public function parse(string $pgn): array;
-    public function validate(string $pgn): bool;
+    public function validate(?string $pgn): bool;
 }

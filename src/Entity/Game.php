@@ -26,50 +26,50 @@ class Game
 
     /**
      * @Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.event.not_blank")
      */
     private $event;
 
     /**
      * @Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.site.not_blank")
      */
     private $site;
 
     /**
      * @Column(type="pgn_date")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.date.not_blank")
      */
     private $date;
 
     /**
      * @Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.round.not_blank")
      */
     private $round;
 
     /**
      * @Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.white.not_blank")
      */
     private $white;
 
     /**
      * @Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.black.not_blank")
      */
     private $black;
 
     /**
      * @Column()
-     * @Assert\NotBlank()
-     * @Assert\Choice({"1-0", "0-1", "1/2-1/2", "*"})
+     * @Assert\NotBlank(message="game.result.not_blank")
+     * @Assert\Choice({"1-0", "0-1", "1/2-1/2", "*"}, message="game.result.choice")
      */
     private $result;
 
     /**
      * @Column(type="simple_array")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="game.moves.not_blank")
      */
     private $moves;
 
