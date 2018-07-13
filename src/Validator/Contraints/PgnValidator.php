@@ -21,6 +21,10 @@ class PgnValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
+        if (empty($value)) {
+            return;
+        }
+
         if (!$this->chess->validate($value)) {
             $this
                 ->context

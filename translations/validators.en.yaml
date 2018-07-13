@@ -9,7 +9,7 @@ user:
   email:
     unique: The email address already exists.
     not_blank: You have to enter an email address.
-    email: You must enter a valid email address.
+    invalid: You must enter a valid email address.
 
 game:
   event.not_blank: You have to enter the event.
@@ -26,4 +26,4 @@ game:
 import:
   pgn:
     not_blank: You have to add a PGN file.
-    pgn: This is not a valid PGN file.
+    invalid: This is not a valid PGN file.

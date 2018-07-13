@@ -11,7 +11,7 @@ class RyanhsPgnParser implements PgnParserInterface
         return Chess::parsePgn($pgn);
     }
 
-    public function validate(?string $pgn): bool
+    public function validate(string $pgn): bool
     {
         return Chess::validatePgn($pgn);
     }

@@ -7,5 +7,5 @@ use Symfony\Component\Validator\Constraint;
 /** @Annotation */
 class Pgn extends Constraint
 {
-    public $message = 'import.pgn.pgn';
+    public $message = 'import.pgn.invalid';
 }

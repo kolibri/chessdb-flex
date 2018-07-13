@@ -48,7 +48,7 @@ class User implements UserInterface
     /**
      * @Column(type="string", unique=true)
      * @NotBlank(message="user.email.not_blank")
-     * @Email(message="user.email.email")
+     * @Email(message="user.email.invalid")
      */
     private $email;
 

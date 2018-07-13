@@ -4,12 +4,12 @@ user:
     not_blank: Du musst einen Nutzernamen eingeben.
   password:
     not_blank: Du musst ein Passwort eingeben.
-    max_length: Respekt wenn du dir das merken kannst. Aber du darfst leider nur 4096 Zeichen eingeben.
+    max_length: Respekt wenn Du Dir das merken kannst. Aber du darfst leider nur 4096 Zeichen eingeben.
     repeated: Die Passwörter stimmen nicht überein.
   email:
     unique: Diese Email Addresse gibt es schon.
     not_blank: Du musst eine Email Adresse eingeben.
-    email: Du musst eine gültige Email Adresse eingeben.
+    invalid: Du musst eine gültige Email Adresse eingeben.
 
 game:
   event.not_blank: Du musst das Ereignis eingeben.
@@ -26,4 +26,4 @@ game:
 import:
   pgn:
     not_blank: Du musst eine PGN Datei hinzufügen.
-    pgn: Das ist keine gültige PGN Datei.
+    invalid: Das ist keine gültige PGN Datei.
