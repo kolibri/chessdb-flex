@@ -14,7 +14,7 @@ class GameHandler
         $this->repository = $repository;
     }
 
-    public function handle(Game $game)
+    public function handle(Game $game): void
     {
         $this->repository->persist($game);
     }
