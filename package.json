@@ -14,6 +14,6 @@
         "build": "encore production"
     },
     "dependencies": {
-        "chessboard": "^1.0.0"
+        "chessboard": "https://github.com/kolibri/chessboard.git"
     }
 }
