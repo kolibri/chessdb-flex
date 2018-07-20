@@ -2,26 +2,25 @@
 
 namespace App\Form\Handler;
 
-use App\Entity\User;
+use App\Form\Dto\UserRegistration;
+use App\Form\Transformer\UserTransformer;
 use App\Repository\UserRepository;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserRegistrationHandler
 {
     private $repository;
-    private $passwordEncoder;
+    private $userTransformer;
 
-    public function __construct(UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserRepository $repository, UserTransformer $userTransformer)
     {
         $this->repository = $repository;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->userTransformer = $userTransformer;
     }
 
-    public function handle(User $user): void
+    public function handle(UserRegistrationq $user): void
     {
-        $password = $this->passwordEncoder->encodePassword($user, $user->getPlainPassword());
-        $user->setPassword($password);
-
-        $this->repository->persist($user);
+        $this->repository->persist(
+            $this->userTransformer->fromDtoToEntity($user)
+        );
     }
 }

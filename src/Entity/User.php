@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping\Id;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
@@ -35,13 +34,8 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @NotBlank(message="user.password.not_blank")
-     * @Length(max=4096, maxMessage="user.password.max_length")
-     */
-    private $plainPassword;
-
-    /**
      * @Column(type="string", length=64)
+     * @NotBlank()
      */
     private $password;
 
@@ -57,9 +51,16 @@ class User implements UserInterface
      */
     private $roles;
 
-    public function __construct()
-    {
-        $this->roles = ['ROLE_USER'];
+    public function __construct(
+        string $username,
+        string $email,
+        string $password,
+        array $roles = []
+    ) {
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;
+        $this->roles = array_merge($roles, ['ROLE_USER']);
     }
 
     public function getId(): string
@@ -70,21 +71,6 @@ class User implements UserInterface
     public function getUsername(): ?string
     {
         return $this->username;
-    }
-
-    public function setUsername(string $username): void
-    {
-        $this->username = $username;
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(string $plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
     }
 
     public function getPassword(): string

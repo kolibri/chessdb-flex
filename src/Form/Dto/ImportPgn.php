@@ -9,11 +9,11 @@ class ImportPgn
 {
     /**
      * @NotBlank(message="import.pgn.not_blank")
-     * @Pgn()
+     * @Pgn(message="import.pgn.invalid")
      */
     private $pgnString;
 
-    public function __construct(?string $pgnString)
+    public function setPgnString(?string $pgnString)
     {
         $this->pgnString = $pgnString;
     }

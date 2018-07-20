@@ -6,7 +6,6 @@ use App\Form\Dto\ImportPgn;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ImportPgnType extends AbstractType
@@ -18,11 +17,6 @@ class ImportPgnType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => ImportPgn::class,
-            'empty_data' => function (FormInterface $form) {
-                return new ImportPgn($form->get('pgnString')->getData());
-            }
-        ]);
+        $resolver->setDefaults(['data_class' => ImportPgn::class]);
     }
 }
