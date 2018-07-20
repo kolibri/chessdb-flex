@@ -8,13 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ChessExtension extends \Twig_Extension
 {
-    private $resolver;
-
-    pubflic function __construct(OptionsResolver $resolver)
-    {
-        $this->resolver = $resolver;
-    }
-
     public function getFilters()
     {
         return [
@@ -25,10 +18,15 @@ class ChessExtension extends \Twig_Extension
 
     public function renderStringToPgnDiv(string $pgn, array $attributes = [])
     {
-        $attributeString = '';
-        foreach ($this->parseAttributes($attributes) as $key => $value) {
-            $attributeString .= sprintf("%s='%s' ", $key, $value);
-        }
+        $attributeString = array_map(
+            function($attribute){
+                return sprintf(" data-%s='%s'", $attribute['key'], $attribute['value']);
+            },
+            array_filter(
+                $this->parseAttributes($attributes), 
+                function($val){ return (bool) $val['value']; }
+            )
+        );
 
         return sprintf('<div %s>%s</div>', $attributeString, $pgn);
     }
@@ -43,6 +41,7 @@ class ChessExtension extends \Twig_Extension
         $resolver = new OptionsResolver();
 
         $resolver->setDefaults(array(
+            'class' => 'pgn',
             'disable-custom-moves' => 'false',
             'piece-names' => '',
             'player' => null,
@@ -50,17 +49,14 @@ class ChessExtension extends \Twig_Extension
             'reverse' => 'false',
         ));
 
-        $defaultOptions = [
-            'data-label-disable-custom-moves' => 'false',
-            'data-label-piece-names' => '',
-            'data-label-player' => null,
-            'data-label-ply' => null,
-            'data-label-reverse' => 'false',
+        $mapable = [];
+        foreach ($resolver->resolve($options) as $key => $value) {
+            $mapable[] = [
+                'key' => $key,
+                'value' => $value,
+            ];
+        }
 
-//            'data-piece-names' => $this->translator->trans(self::PIECE_NAMES),
-            'class' => 'pgn',
-        ];
-
-        return array_merge($defaultOptions, $options);
+        return $mapable;
     }
 }
