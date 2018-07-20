@@ -4,5 +4,4 @@ namespace App\Form\Exception;
 
 class TransformException extends \RuntimeException
 {
-
 }

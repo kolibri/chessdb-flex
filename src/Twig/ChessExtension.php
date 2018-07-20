@@ -5,7 +5,6 @@ namespace App\Twig;
 use App\Entity\Game;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class ChessExtension extends \Twig_Extension
 {
     public function getFilters()
@@ -19,7 +18,7 @@ class ChessExtension extends \Twig_Extension
     public function renderStringToPgnDiv(string $pgn, array $attributes = [])
     {
         $attributeString = array_map(
-            function($attribute){
+            function ($attribute) {
                 return sprintf(
                     "%s='%s'",
                     'class' === $attribute['key'] ? $attribute['key'] : 'data-'.$attribute['key'],
@@ -27,8 +26,10 @@ class ChessExtension extends \Twig_Extension
                 );
             },
             array_filter(
-                $this->parseAttributes($attributes), 
-                function($val){ return (bool) $val['value']; }
+                $this->parseAttributes($attributes),
+                function ($val) {
+                    return (bool) $val['value'];
+                }
             )
         );
 
@@ -44,14 +45,14 @@ class ChessExtension extends \Twig_Extension
     {
         $resolver = new OptionsResolver();
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'class' => 'pgn',
             'disable-custom-moves' => 'false',
             'piece-names' => '',
             'player' => null,
             'ply' => null,
             'reverse' => 'false',
-        ));
+        ]);
 
         $mapable = [];
         foreach ($resolver->resolve($options) as $key => $value) {

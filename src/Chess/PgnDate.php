@@ -47,7 +47,6 @@ class PgnDate
 
     public function setMonth(?int $month): void
     {
-
         if ($month > 12 || $month < 0) {
             throw new \InvalidArgumentException(sprintf('given month "%s" is not valid', $month));
         }
