@@ -34,8 +34,8 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @Column(type="string", length=64)
-     * @NotBlank()
+     * @Column()
+     * @NotBlank(message="user.password.not_blank")
      */
     private $password;
 
@@ -47,7 +47,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Column(type="array")
+     * @Column(type="simple_array")
      */
     private $roles;
 

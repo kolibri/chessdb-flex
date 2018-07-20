@@ -11,14 +11,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * @Route("/import", name="import_")
- */
+/** @Route("/import", name="import_") */
 class ImportController extends Controller
 {
-    /**
-     * @Route("/pgn", name="pgn")
-     */
+    /** @Route("/pgn", name="pgn") */
     public function pgn(Request $request, ImportPgnHandler $handler)
     {
         $form = $this->createForm(ImportPgnType::class);
@@ -33,9 +29,7 @@ class ImportController extends Controller
         return $this->render('import/pgn.html.twig', ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/game/{id}", name="game")
-     */
+    /** @Route("/game/{id}", name="game") */
     public function game(Request $request, Game $game, GameHandler $handler)
     {
         $form = $this->createForm(GameType::class, $game);

@@ -7,9 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
+    /** @Route("/", name="homepage") */
     public function homepage()
     {
         return $this->render('index/homepage.html.twig');
