@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {{ game|game_to_pgn_div({'data-ply': 0}) }}
+    {{ game|game_to_pgn_div({'ply': 0}) }}
 {% endblock %}

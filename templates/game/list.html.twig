@@ -5,7 +5,7 @@
         {% for game in games %}
             <li>
                 <a href="{{ path('game_view', {'id': game.id}) }}">{{ game.date.toString }}: {{ game.white }} - {{ game.black }}: {{ game.result }}</a>
-                {{ game|game_to_pgn_div({'data-show-header': 'false', 'data-show-buttons': 'false'}) }}
+                {{ game|game_to_pgn_div() }}
             </li>
         {% else %}
             <li>{{ 'game.list.no_games'|trans }}</li>

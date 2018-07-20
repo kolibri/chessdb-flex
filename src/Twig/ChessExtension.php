@@ -3,6 +3,8 @@
 namespace App\Twig;
 
 use App\Entity\Game;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class ChessExtension extends \Twig_Extension
 {
@@ -16,12 +18,21 @@ class ChessExtension extends \Twig_Extension
 
     public function renderStringToPgnDiv(string $pgn, array $attributes = [])
     {
-        $attributeString = '';
-        foreach ($this->parseAttributes($attributes) as $key => $value) {
-            $attributeString .= sprintf("%s='%s' ", $key, $value);
-        }
+        $attributeString = array_map(
+            function($attribute){
+                return sprintf(
+                    "%s='%s'",
+                    'class' === $attribute['key'] ? $attribute['key'] : 'data-'.$attribute['key'],
+                    $attribute['value']
+                );
+            },
+            array_filter(
+                $this->parseAttributes($attributes), 
+                function($val){ return (bool) $val['value']; }
+            )
+        );
 
-        return sprintf('<div %s>%s</div>', $attributeString, $pgn);
+        return sprintf('<div %s>%s</div>', implode(' ', $attributeString), $pgn);
     }
 
     public function renderGameToPgnDiv(Game $game, array $attributes = [])
@@ -31,18 +42,25 @@ class ChessExtension extends \Twig_Extension
 
     private function parseAttributes(array $options = []): array
     {
-        $defaultOptions = [
-            'data-show-buttons' => 'true',
-            'data-show-moves' => 'false',
-            'data-show-header' => 'true',
-            'data-label-next' => '&gt;&gt;',
-            'data-label-back' => '&lt;&lt;',
-            'data-label-reset' => 'start',
-            'data-label-turn' => 'flip',
-//            'data-piece-names' => $this->translator->trans(self::PIECE_NAMES),
-            'class' => 'pgn',
-        ];
+        $resolver = new OptionsResolver();
 
-        return array_merge($defaultOptions, $options);
+        $resolver->setDefaults(array(
+            'class' => 'pgn',
+            'disable-custom-moves' => 'false',
+            'piece-names' => '',
+            'player' => null,
+            'ply' => null,
+            'reverse' => 'false',
+        ));
+
+        $mapable = [];
+        foreach ($resolver->resolve($options) as $key => $value) {
+            $mapable[] = [
+                'key' => $key,
+                'value' => $value,
+            ];
+        }
+
+        return $mapable;
     }
 }
