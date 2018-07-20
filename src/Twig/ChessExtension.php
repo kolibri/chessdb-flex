@@ -20,7 +20,11 @@ class ChessExtension extends \Twig_Extension
     {
         $attributeString = array_map(
             function($attribute){
-                return sprintf(" data-%s='%s'", $attribute['key'], $attribute['value']);
+                return sprintf(
+                    "%s='%s'",
+                    'class' === $attribute['key'] ? $attribute['key'] : 'data-'.$attribute['key'],
+                    $attribute['value']
+                );
             },
             array_filter(
                 $this->parseAttributes($attributes), 
@@ -28,7 +32,7 @@ class ChessExtension extends \Twig_Extension
             )
         );
 
-        return sprintf('<div %s>%s</div>', $attributeString, $pgn);
+        return sprintf('<div %s>%s</div>', implode(' ', $attributeString), $pgn);
     }
 
     public function renderGameToPgnDiv(Game $game, array $attributes = [])
