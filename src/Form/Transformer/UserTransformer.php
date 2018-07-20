@@ -22,8 +22,8 @@ class UserTransformer
     public function fromDtoToEntity(UserRegistration $dto): User
     {
         $user = new User(
-            $dto->getUsername(),
-            $dto->getEmail(),
+            (string) $dto->getUsername(),
+            (string) $dto->getEmail(),
             $this->encoders->getEncoder(User::class)->encodePassword($dto->getPassword(), $dto->getSalt())
         );
 
