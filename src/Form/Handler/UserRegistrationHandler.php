@@ -17,7 +17,7 @@ class UserRegistrationHandler
         $this->userTransformer = $userTransformer;
     }
 
-    public function handle(UserRegistrationq $user): void
+    public function handle(UserRegistration $user): void
     {
         $this->repository->persist(
             $this->userTransformer->fromDtoToEntity($user)
