@@ -14,14 +14,14 @@ class GameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('event', TextType::class, ['label' => 'form.game.event'])
-            ->add('site', TextType::class, ['label' => 'form.game.site'])
-            ->add('date', PgnDateType::class, ['label' => 'form.game.date'])
-            ->add('round', TextType::class, ['label' => 'form.game.round'])
-            ->add('white', TextType::class, ['label' => 'form.game.white'])
-            ->add('black', TextType::class, ['label' => 'form.game.black'])
-            ->add('result', TextType::class, ['label' => 'form.game.result'])
-            ->add('moves', MovesType::class, ['label' => 'form.game.moves']);
+            ->add('event', TextType::class, ['label' => 'form.game.label.event'])
+            ->add('site', TextType::class, ['label' => 'form.game.label.site'])
+            ->add('date', PgnDateType::class, ['label' => 'form.game.label.date'])
+            ->add('round', TextType::class, ['label' => 'form.game.label.round'])
+            ->add('white', TextType::class, ['label' => 'form.game.label.white'])
+            ->add('black', TextType::class, ['label' => 'form.game.label.black'])
+            ->add('result', TextType::class, ['label' => 'form.game.label.result'])
+            ->add('moves', MovesType::class, ['label' => 'form.game.label.moves']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -13,7 +13,7 @@ class ImportPgnType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pgnString', TextareaType::class, ['label' => 'form.import_pgn.pgn_string']);
+        $builder->add('pgnString', TextareaType::class, ['label' => 'form.import_pgn.label.pgn_string']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -6,14 +6,14 @@
     {% endif %}
 
     <form action="{{ path('login') }}" method="post">
-        <label for="username">{{ 'form.login.username' }}</label>
+        <label for="username">{{ 'form.login.label.username'|trans }}</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
-        <label for="password">{{ 'form.login.username' }}</label>
+        <label for="password">{{ 'form.login.label.password'|trans }}</label>
         <input type="password" id="password" name="_password" />
 
         <input type="hidden" name="_target_path" value="{{ path('game_list') }}" />
 
-        <button type="submit">{{ 'form.login.submit' }}</button>
+        <button type="submit">{{ 'form.login.label.submit'|trans }}</button>
     </form>
 {% endblock %}

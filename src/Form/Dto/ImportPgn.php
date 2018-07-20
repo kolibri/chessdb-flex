@@ -8,17 +8,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class ImportPgn
 {
     /**
-     * @NotBlank()
+     * @NotBlank(message="import.pgn.not_blank")
      * @Pgn()
      */
     private $pgnString;
 
-    public function __construct(string $pgnString)
+    public function __construct(?string $pgnString)
     {
         $this->pgnString = $pgnString;
     }
 
-    public function getPgnString(): string
+    public function getPgnString(): ?string
     {
         return $this->pgnString;
     }

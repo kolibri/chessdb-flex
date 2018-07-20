@@ -15,8 +15,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
+ * @UniqueEntity(fields="email", message="user.email.unique")
+ * @UniqueEntity(fields="username", message="user.username.unique")
  */
 class User implements UserInterface
 {
@@ -30,13 +30,13 @@ class User implements UserInterface
 
     /**
      * @Column(type="string", unique=true)
-     * @NotBlank()
+     * @NotBlank(message="user.username.not_blank")
      */
     private $username;
 
     /**
-     * @NotBlank()
-     * @Length(max=4096)
+     * @NotBlank(message="user.password.not_blank")
+     * @Length(max=4096, maxMessage="user.password.max_length")
      */
     private $plainPassword;
 
@@ -47,8 +47,8 @@ class User implements UserInterface
 
     /**
      * @Column(type="string", unique=true)
-     * @NotBlank()
-     * @Email()
+     * @NotBlank(message="user.email.not_blank")
+     * @Email(message="user.email.invalid")
      */
     private $email;
 
