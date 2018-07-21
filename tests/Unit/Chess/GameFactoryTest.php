@@ -38,7 +38,10 @@ class GameFactoryTest extends TestCase
         );
 
         $gameFactory = new GameFactory($parserMock);
-        $resultGame = $gameFactory->createFromImportPgn(new ImportPgn($this->validPgn()));
+        $importPgn = new ImportPgn();
+        $importPgn->setPgnString($this->validPgn());
+
+        $resultGame = $gameFactory->createFromImportPgn($importPgn);
 
         static::assertSame('event', $resultGame->getEvent());
         static::assertSame('site', $resultGame->getSite());

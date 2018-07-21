@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class RyanhsPgnParserTest extends TestCase
 {
-    public function testParserImplementsParserInterface()
+    public function testParserImplementsParserInterface(): void
     {
         $parser = new RyanhsPgnParser();
 
