@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    DocumentRoot {{ document_root }}
+
+    RewriteEngine on
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ %{DOCUMENT_ROOT}/index.php [QSA,L]
+
+    <Directory {{ document_root }}>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+        Require all granted
+    </Directory>
+</VirtualHost>
