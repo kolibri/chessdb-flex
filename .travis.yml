@@ -18,6 +18,8 @@ before_script:
 script:
   - php phpstan.phar analyze -l7 ./src
   - php php-cs-fixer-phar fix --dry-run
+  - php ./bin/console doctrine:database:create -n
+  - php ./bin/console doctrine:schema:create -n
   - php ./bin/phpunit
 
 notifications:
