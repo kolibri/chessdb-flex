@@ -4,11 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use App\Repository\GameRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /** @Route("/game", name="game_") */
-class GameController extends Controller
+class GameController extends AbstractController
 {
     /** @Route("/", name="list") */
     public function list(GameRepository $repository)

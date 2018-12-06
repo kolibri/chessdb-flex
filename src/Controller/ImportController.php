@@ -7,12 +7,12 @@ use App\Form\Handler\GameHandler;
 use App\Form\Handler\ImportPgnHandler;
 use App\Form\Type\GameType;
 use App\Form\Type\ImportPgnType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /** @Route("/import", name="import_") */
-class ImportController extends Controller
+class ImportController extends AbstractController
 {
     /** @Route("/pgn", name="pgn") */
     public function pgn(Request $request, ImportPgnHandler $handler)
